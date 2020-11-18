@@ -118,6 +118,23 @@ class SellFormState extends State<SellForm> {
               ),
             ),
             Container(
+  width: 400.0,
+  child: Padding(
+    padding: const EdgeInsets.all(8.0),
+    child: TextFormField(
+      decoration: InputDecoration(
+        labelText: 'Enter the shop name',
+        prefixIcon: Icon(Icons.business_outlined),
+        border: OutlineInputBorder(),
+      ),
+      validator: (desc) {
+        if (desc.isEmpty) return 'Please enter a valid shop name';
+        return null;
+      },
+    ),
+  ),
+),
+            Container(
               width: 400.0,
               child: Padding(
                 padding: const EdgeInsets.all(8.0),

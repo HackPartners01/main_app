@@ -5,6 +5,7 @@ import 'package:main_app/constants.dart';
 import 'package:main_app/components/search_bar.dart';
 import 'package:main_app/components/circle_image_and_label.dart';
 import 'package:main_app/components/body_section.dart';
+import 'sell_page.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -121,7 +122,7 @@ class HomePage extends StatelessWidget {
                 ),
               ],
             ), // TODO: Add Categories and products to scrollable list
-            Icon(Icons.directions_transit), //TODO : Create Sell Page by Gautam
+            SellPage(), //TODO : Create Sell Page by Gautam
             Icon(Icons.directions_bike), //TODO : Create You Page
           ],
         ),

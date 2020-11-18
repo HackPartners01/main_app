@@ -7,7 +7,7 @@ const Color kColorGreen = Color(0xFF50D890);
 const Color kColorBlue = Color(0xFF4F98CA);
 const Color kColorBlack = Color(0xFF272727);
 
-const double kBottomAppBarHeight = 55.0;
+const double kBottomAppBarHeight = 60.0;
 const double kBottomAppBarIconSize = 25.0;
 const EdgeInsets kBottomAppBarIconMargin = EdgeInsets.only(top: 5.0);
 

@@ -72,30 +72,40 @@ class HomePage extends StatelessWidget {
                     scrollDirection: Axis.horizontal,
                     children: <Widget>[
                       CircleImageAndLabel(
-                        image: AssetImage('assets/images/Pseudocode.png'),
-                        label: 'Category1',
-                        onPress: () {},
-                      ),
-                      CircleImageAndLabel(
-                        image: AssetImage('assets/images/Pseudocode.png'),
-                        label: 'Category2',
-                        onPress: () {},
-                      ),
-                      CircleImageAndLabel(
-                        image: AssetImage('assets/images/Pseudocode.png'),
-                        label: 'Category3',
-                        onPress: () {},
-                      ),
-                      CircleImageAndLabel(
-                        image: AssetImage('assets/images/Pseudocode.png'),
-                        label: 'Category4',
-                        onPress: () {},
-                      ),
-                      CircleImageAndLabel(
-                        image: AssetImage('assets/images/Pseudocode.png'),
-                        label: 'Category5',
-                        onPress: () {},
-                      ),
+                          image: AssetImage('assets/images/Pseudocode.png'),
+                          label: 'Category1',
+                          onPress: () {
+                            Navigator.push(context,MaterialPageRoute(builder: (context) => ProductList()));
+                          },
+                        ),
+                        CircleImageAndLabel(
+                          image: AssetImage('assets/images/Pseudocode.png'),
+                          label: 'Category2',
+                          onPress: () {
+                            Navigator.push(context,MaterialPageRoute(builder: (context) => ProductList()));
+                          },
+                        ),
+                        CircleImageAndLabel(
+                          image: AssetImage('assets/images/Pseudocode.png'),
+                          label: 'Category3',
+                          onPress: () {
+                            Navigator.push(context,MaterialPageRoute(builder: (context) => ProductList()));
+                          },
+                        ),
+                        CircleImageAndLabel(
+                          image: AssetImage('assets/images/Pseudocode.png'),
+                          label: 'Category4',
+                          onPress: () {
+                            Navigator.push(context,MaterialPageRoute(builder: (context) => ProductList()));
+                          },
+                        ),
+                        CircleImageAndLabel(
+                          image: AssetImage('assets/images/Pseudocode.png'),
+                          label: 'Category5',
+                          onPress: () {
+                            Navigator.push(context,MaterialPageRoute(builder: (context) => ProductList()));
+                          },
+                        ),
                     ],
                   ),
                 ),

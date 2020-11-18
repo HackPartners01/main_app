@@ -1,9 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'package:main_app/constants.dart';
 import 'package:main_app/components/search_bar.dart';
 import 'package:main_app/components/circle_image_and_label.dart';
+import 'package:main_app/components/body_section.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -12,7 +13,8 @@ class HomePage extends StatelessWidget {
       length: 3,
       child: Scaffold(
         appBar: AppBar(
-          title: Text('RasteKaMaalSasteMe', style: kTopAppBarTextStyle),
+          title: Text('Raste ka Maal Saste me',
+              style: GoogleFonts.openSans(textStyle: kTopAppBarTextStyle)),
           actions: <Widget>[
             IconButton(
                 icon: Icon(Icons.search),
@@ -56,43 +58,12 @@ class HomePage extends StatelessWidget {
             ],
           ),
         ),
-        bottomNavigationBar: SizedBox(
-          height: kBottomAppBarHeight,
-          child: BottomAppBar(
-            color: kColorBlue,
-            child: TabBar(
-              indicatorColor: kColorBlack,
-              labelColor: kColorBlack,
-              unselectedLabelColor: kColorWhite,
-              labelPadding: EdgeInsets.zero,
-              indicatorWeight: 5.0,
-              labelStyle: kBottomAppBarTextStyle,
-              tabs: [
-                Tab(
-                  icon: Icon(Icons.shopping_cart, size: kBottomAppBarIconSize),
-                  text: 'BUY',
-                  iconMargin: kBottomAppBarIconMargin,
-                ),
-                Tab(
-                  icon: Icon(Icons.store, size: kBottomAppBarIconSize),
-                  text: 'SELL',
-                  iconMargin: kBottomAppBarIconMargin,
-                ),
-                Tab(
-                  icon: Icon(Icons.account_circle, size: kBottomAppBarIconSize),
-                  text: 'YOU',
-                  iconMargin: kBottomAppBarIconMargin,
-                ),
-              ],
-            ),
-            // child: Text('Tabs Demo'),
-          ),
-        ),
         body: TabBarView(
           children: [
             Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
+                // Category Bar
                 Container(
                   height: 100.0,
                   decoration: BoxDecoration(color: kColorGreen),
@@ -127,33 +98,65 @@ class HomePage extends StatelessWidget {
                     ],
                   ),
                 ),
+                // Body Sections
                 Expanded(
                   child: Container(
-                    decoration: BoxDecoration(color: kColorWhite),
+                    decoration: BoxDecoration(color: kColorBlack),
                     child: ListView(
                       scrollDirection: Axis.vertical,
                       children: <Widget>[
-                        Container(
-                          padding: EdgeInsets.all(10.0),
+                        BodySection(
+                          title: 'Deals of the Day',
+                          numberOfCards: 4,
                           color: kColorBlue,
-                          child: Column(
-                            children: <Widget>[
-                              Text('Hello'),
-                              Row(
-                                children: <Widget>[],
-                              ),
-                            ],
-                          ),
+                        ),
+                        BodySection(
+                          title: 'Recommendations : Based on Your Search',
+                          numberOfCards: 5,
+                          color: kColorGreen,
                         ),
                       ],
                     ),
                   ),
                 ),
               ],
-            ), // TODO: Add scrollable products widget by Vishwas
+            ), // TODO: Add Categories and products to scrollable list
             Icon(Icons.directions_transit), //TODO : Create Sell Page by Gautam
             Icon(Icons.directions_bike), //TODO : Create You Page
           ],
+        ),
+        bottomNavigationBar: SizedBox(
+          height: kBottomAppBarHeight,
+          child: BottomAppBar(
+            color: kColorBlue,
+            child: TabBar(
+              indicatorColor: kColorBlack,
+              labelColor: kColorBlack,
+              unselectedLabelColor: kColorWhite,
+              labelPadding: EdgeInsets.zero,
+              indicatorWeight: 5.0,
+              labelStyle:
+                  GoogleFonts.openSans(textStyle: kBottomAppBarTextStyle),
+              tabs: [
+                Tab(
+                  icon: Icon(Icons.shopping_cart, size: kBottomAppBarIconSize),
+                  text: 'BUY',
+                  iconMargin: kBottomAppBarIconMargin,
+                ),
+                Tab(
+                  icon: Icon(Icons.store, size: kBottomAppBarIconSize),
+                  text: 'SELL',
+                  iconMargin: kBottomAppBarIconMargin,
+                ),
+                Tab(
+                  icon: Icon(Icons.account_circle, size: kBottomAppBarIconSize),
+                  text: 'YOU',
+                  iconMargin: kBottomAppBarIconMargin,
+                ),
+              ],
+            ),
+            // child: Text('Tabs Demo'),
+          ),
         ),
       ),
     );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'package:main_app/constants.dart';
 
@@ -18,7 +19,7 @@ class CircleImageAndLabel extends StatelessWidget {
         onTap: onPress,
         child: Container(
           width: 100,
-          padding: EdgeInsets.all(5.0),
+          padding: EdgeInsets.all(10.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
@@ -34,7 +35,8 @@ class CircleImageAndLabel extends StatelessWidget {
               Text(
                 label.toUpperCase(),
                 textAlign: TextAlign.center,
-                style: kCircleImageAndLabelTextStyle,
+                style: GoogleFonts.openSans(
+                    textStyle: kCircleImageAndLabelTextStyle),
               ),
             ],
           ),

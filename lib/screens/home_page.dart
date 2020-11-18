@@ -5,6 +5,7 @@ import 'package:main_app/constants.dart';
 import 'package:main_app/components/search_bar.dart';
 import 'package:main_app/components/circle_image_and_label.dart';
 import 'package:main_app/components/body_section.dart';
+import 'package:main_app/screens/product_list.dart';
 import 'sell_page.dart';
 
 class HomePage extends StatelessWidget {

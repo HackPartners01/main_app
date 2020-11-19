@@ -1,8 +1,7 @@
-import 'package:dropdown_formfield/dropdown_formfield.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:main_app/Data%20Models/seller.dart';
-import 'package:main_app/Data Models/product.dart';
+import 'package:main_app/data_models/seller.dart';
+import 'package:main_app/data_models/product.dart';
 
 
 

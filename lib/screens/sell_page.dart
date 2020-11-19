@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:main_app/Data Models/seller.dart';
+import 'package:main_app/data_models/seller.dart';
 import 'package:main_app/screens/sell_page_part2.dart';
-import 'package:main_app/Data Models/product.dart ';
+import 'package:main_app/data_models/product.dart ';
 
 
 class SellPage extends StatelessWidget {

@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:main_app/Data Models/seller_info.dart';
+import 'package:main_app/Data Models/seller.dart';
+import 'package:main_app/screens/sell_page_part2.dart';
+import 'package:main_app/Data Models/product.dart ';
+
 
 class SellPage extends StatelessWidget {
   @override
@@ -18,7 +21,8 @@ class SellForm extends StatefulWidget {
 
 class SellFormState extends State<SellForm> {
   final _formKey = GlobalKey<FormState>();
-  final _sellerinfo = SellerInfo();
+  final _sellerinfo = Seller();
+  final _product = Product();
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -45,8 +49,8 @@ class SellFormState extends State<SellForm> {
                     if (name.isEmpty) return 'Please enter a valid name';
                     return null;
                   },
-                  onSaved: (val) =>
-                      setState(() => _sellerinfo.sellerName = val), //TODO
+                  onSaved: (val)=>
+                      setState(() => _sellerinfo.name = val ),//TODO
                 ),
               ),
             ),
@@ -67,64 +71,13 @@ class SellFormState extends State<SellForm> {
                       return 'Please enter a valid Mobile Number';
                     return null;
                   },
-                  onSaved: (val) =>
-                      setState(() => _sellerinfo.phoneNumber = val), //TODO
+                  onSaved: (val)=>
+                      setState(() => _sellerinfo.contact = int.parse(val)),//TODO
                 ),
               ),
             ),
-            Container(
-              width: 400.0,
-              child: Padding(
-                padding:
-                    const EdgeInsets.only(left: 0, right: 8, top: 8, bottom: 8),
-                child: Row(
-                  children: [
-                    CategoryDropdown(),
-                    Expanded(
-                      child: Container(
-                        child: TextFormField(
-                          autocorrect: true,
-                          decoration: InputDecoration(
-                            labelText: 'Enter product name',
-                            prefixIcon: Icon(Icons.drive_file_rename_outline),
-                            border: OutlineInputBorder(),
-                          ),
-                          validator: (name) {
-                            if (name.isEmpty)
-                              return 'Please enter a product name';
-                            return null;
-                          },
-                          onSaved: (val) => setState(
-                              () => _sellerinfo.productName = val), //TODO
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            Container(
-              width: 400.0,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: TextFormField(
-                  keyboardType: TextInputType.multiline,
-                  minLines: 3,
-                  maxLines: 3,
-                  decoration: InputDecoration(
-                    labelText: 'Enter the product description',
-                    border: OutlineInputBorder(),
-                  ),
-                  validator: (desc) {
-                    if (desc.isEmpty)
-                      return 'Please enter  a product description';
-                    return null;
-                  },
-                  onSaved: (val) => setState(
-                      () => _sellerinfo.productDescription = val), //TODO
-                ),
-              ),
-            ),
+
+
             Container(
               width: 400.0,
               child: Padding(
@@ -139,8 +92,8 @@ class SellFormState extends State<SellForm> {
                     if (desc.isEmpty) return 'Please enter a valid shop name';
                     return null;
                   },
-                  onSaved: (val) =>
-                      setState(() => _sellerinfo.shopName = val), //TODO
+                  onSaved: (val)=>
+                      setState(() => _sellerinfo.shopName = val ),//TODO
                 ),
               ),
             ),
@@ -158,8 +111,8 @@ class SellFormState extends State<SellForm> {
                     if (desc.isEmpty) return 'Please enter a valid address';
                     return null;
                   },
-                  onSaved: (val) =>
-                      setState(() => _sellerinfo.shopAddress = val), //TODO
+                  onSaved: (val)=>
+                      setState(() => _sellerinfo.shopAddress = val ),//TODO
                 ),
               ),
             ),
@@ -172,7 +125,7 @@ class SellFormState extends State<SellForm> {
                     Expanded(
                       child: Padding(
                         padding:
-                            const EdgeInsets.only(top: 8, right: 8, bottom: 8),
+                        const EdgeInsets.only(top: 8, right: 8, bottom: 8),
                         child: Container(
                           child: TextFormField(
                             autocorrect: true,
@@ -185,8 +138,8 @@ class SellFormState extends State<SellForm> {
                                 return 'Please enter a city name';
                               return null;
                             },
-                            onSaved: (val) => setState(
-                                () => _sellerinfo.cityName = val), //TODO
+                            onSaved: (val)=>
+                                setState(() => _sellerinfo.shopAddress += val+" "),//TODO
                           ),
                         ),
                       ),
@@ -194,7 +147,7 @@ class SellFormState extends State<SellForm> {
                     Expanded(
                       child: Padding(
                         padding:
-                            const EdgeInsets.only(top: 8, bottom: 8, left: 8),
+                        const EdgeInsets.only(top: 8, bottom: 8, left: 8),
                         child: Container(
                           child: TextFormField(
                             autocorrect: true,
@@ -207,8 +160,8 @@ class SellFormState extends State<SellForm> {
                                 return 'Please enter a valid state';
                               return null;
                             },
-                            onSaved: (val) => setState(
-                                () => _sellerinfo.stateName = val), //TODO
+                            onSaved: (val)=>
+                                setState(() => _sellerinfo.shopAddress += val ),//TODO
                           ),
                         ),
                       ),
@@ -224,13 +177,19 @@ class SellFormState extends State<SellForm> {
                 onPressed: () {
                   final form = _formKey.currentState;
                   if (form.validate()) {
-                    if (_MyStatefulWidgetState.dropdownValue !=
-                        'Choose Category') {
+
                       form.save();
                       _sellerinfo.save();
-                    }
+
                     Scaffold.of(context).showSnackBar(
                         SnackBar(content: Text('Sahi hai bhai data!')));
+
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => SellPage2(_sellerinfo),
+                        ),
+                      );
                   }
                 },
               ),
@@ -242,42 +201,3 @@ class SellFormState extends State<SellForm> {
   }
 }
 
-class CategoryDropdown extends StatefulWidget {
-  CategoryDropdown({Key key}) : super(key: key);
-
-  @override
-  _MyStatefulWidgetState createState() => _MyStatefulWidgetState();
-}
-
-/// This is the private State class that goes with MyStatefulWidget.
-class _MyStatefulWidgetState extends State<CategoryDropdown> {
-  static String dropdownValue = 'Choose Category';
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: DropdownButton<String>(
-        value: dropdownValue,
-        elevation: 16,
-        onChanged: (String newValue) {
-          setState(() {
-            dropdownValue = newValue;
-          });
-        },
-        items: <String>[
-          'Choose Category',
-          'Category1',
-          'Category2',
-          'Category3',
-          'Category4'
-        ].map<DropdownMenuItem<String>>((String value) {
-          return DropdownMenuItem<String>(
-            value: value,
-            child: Text(value),
-          );
-        }).toList(),
-      ),
-    );
-  }
-}

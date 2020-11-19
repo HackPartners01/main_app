@@ -1,13 +1,16 @@
 class Product {
-  final int id; // (Product ID) Generated upon addition
-  final String name;
-  final String category;
-  final int sellerId; // Will be used to fetch seller info
-  final String networkImageAddress;
-  final String description;
-  final int price;
+  int id;
+  String category = '';
+  String name = '';
+  String description = '';
+  int sellerId;
+  String networkImageAddress = "";
+  int price;
+  static int count=0;
 
-  const Product(
+
+
+  Product({
     this.id,
     this.name,
     this.category,
@@ -15,5 +18,13 @@ class Product {
     this.networkImageAddress,
     this.description,
     this.price,
-  );
+  }){
+    count++;
+    this.id = count;
+  }
+
+  save() {
+    print('Product Saved');
+  }
+
 }

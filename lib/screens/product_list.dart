@@ -1,21 +1,30 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 import 'package:main_app/constants.dart';
+import 'package:main_app/components/search_bar.dart';
 
 class ProductList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return
-      Scaffold(
-        body: ProductListDisplay(),
-        appBar: AppBar(
-          title: Text("Raste ka maal saste me",style: GoogleFonts.openSans(textStyle: kTopAppBarTextStyle)),
-          backgroundColor: kColorBlue,
-
+    return Scaffold(
+      appBar: AppBar(
+        title: FittedBox(
+          fit: BoxFit.fitWidth,
+          child: Text('Raste ka Maal Saste me',
+              style: GoogleFonts.openSans(textStyle: kTopAppBarTextStyle)),
         ),
-      );
-
+        actions: <Widget>[
+          IconButton(
+              icon: Icon(Icons.search),
+              onPressed: () {
+                showSearch(context: context, delegate: SearchBar());
+              })
+        ],
+      ),
+      body: ProductListDisplay(),
+    );
   }
 }
 
@@ -72,12 +81,7 @@ class Choice {
 
 class ChoiceCard extends StatelessWidget {
   const ChoiceCard(
-      {Key key,
-      this.choice,
-      this.onTap,
-      @required this.item,
-      this.selected: false})
-      : super(key: key);
+      {this.choice, this.onTap, @required this.item, this.selected: false});
 
   final Choice choice;
 

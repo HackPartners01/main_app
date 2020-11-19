@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:main_app/screens/sell_page_part2.dart';
 
 class Seller {
-  final String name = '';
-  final int contact ;
-  final int id;
-  final String shopName = '';
-  final String shopAddress = '';
-  final double latitude;
-  final double longitude;
+  String name = '';
+  int contact ;
+  int id;
+  String shopName = '';
+  String shopAddress = '';
+  double latitude;
+  double longitude;
   static int count=0;
 
   Seller(

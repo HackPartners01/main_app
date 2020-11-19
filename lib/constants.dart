@@ -20,7 +20,7 @@ const TextStyle kTopAppBarTextStyle = TextStyle(
 );
 
 const TextStyle kCircleImageAndLabelTextStyle = TextStyle(
-  fontSize: 12.0,
+  fontSize: 13.0,
   fontWeight: FontWeight.bold,
 );
 

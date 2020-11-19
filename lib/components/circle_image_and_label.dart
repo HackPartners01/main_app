@@ -19,24 +19,26 @@ class CircleImageAndLabel extends StatelessWidget {
         onTap: onPress,
         child: Container(
           width: 100,
-          padding: EdgeInsets.all(10.0),
+          padding: EdgeInsets.fromLTRB(7.0, 7.0, 7.0, 5.0),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              Expanded(
-                child: Container(
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    image: DecorationImage(image: image),
-                  ),
+              Container(
+                height: 68.0,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  image: DecorationImage(image: image),
                 ),
               ),
-              SizedBox(height: 5.0),
-              Text(
-                label.toUpperCase(),
-                textAlign: TextAlign.center,
-                style: GoogleFonts.openSans(
-                    textStyle: kCircleImageAndLabelTextStyle),
+              FittedBox(
+                fit: BoxFit.fitWidth,
+                child: Text(
+                  label.toUpperCase(),
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.openSans(
+                      textStyle: kCircleImageAndLabelTextStyle),
+                ),
               ),
             ],
           ),

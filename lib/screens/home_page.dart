@@ -21,10 +21,11 @@ class HomePage extends StatelessWidget {
           ),
           actions: <Widget>[
             IconButton(
-                icon: Icon(Icons.search),
-                onPressed: () {
-                  showSearch(context: context, delegate: SearchBar());
-                })
+              icon: Icon(Icons.search),
+              onPressed: () {
+                showSearch(context: context, delegate: SearchBar());
+              },
+            ),
           ],
         ),
         drawer: Drawer(
@@ -79,8 +80,7 @@ class HomePage extends StatelessWidget {
               unselectedLabelColor: kColorWhite,
               labelPadding: EdgeInsets.zero,
               indicatorWeight: 5.0,
-              labelStyle:
-                  GoogleFonts.openSans(textStyle: kBottomAppBarTextStyle),
+              labelStyle: GoogleFonts.openSans(textStyle: kBottomAppBarTextStyle),
               tabs: [
                 Tab(
                   icon: Icon(Icons.shopping_cart, size: kBottomAppBarIconSize),

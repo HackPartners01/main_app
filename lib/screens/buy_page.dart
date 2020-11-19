@@ -14,16 +14,11 @@ class BuyPage extends StatelessWidget {
 
     // ToDo : Fetch the categoryList data from database
     List<Category> categoryList = [
-      Category(
-          name: 'Category1', localImageAddress: 'assets/images/Pseudocode.png'),
-      Category(
-          name: 'Category2', localImageAddress: 'assets/images/Pseudocode.png'),
-      Category(
-          name: 'Category3', localImageAddress: 'assets/images/Pseudocode.png'),
-      Category(
-          name: 'Category4', localImageAddress: 'assets/images/Pseudocode.png'),
-      Category(
-          name: 'Category5', localImageAddress: 'assets/images/Pseudocode.png'),
+      Category(name: 'Category1', localImageAddress: 'assets/images/Pseudocode.png'),
+      Category(name: 'Category2', localImageAddress: 'assets/images/Pseudocode.png'),
+      Category(name: 'Category3', localImageAddress: 'assets/images/Pseudocode.png'),
+      Category(name: 'Category4', localImageAddress: 'assets/images/Pseudocode.png'),
+      Category(name: 'Category5', localImageAddress: 'assets/images/Pseudocode.png'),
     ];
 
     void categoryCardsListBuilder() {
@@ -87,8 +82,13 @@ class BuyPage extends StatelessWidget {
               children: <Widget>[
                 BodySection(
                   title: 'Deals of the Day',
-                  numberOfCards: 4,
+                  numberOfCards: 1,
                   sectionBackgroundColor: kColorBlue,
+                  onPressOfCardChildren: [
+                    () {
+                      Navigator.pushNamed(context, '/ProductPage');
+                    }
+                  ],
                 ),
                 BodySection(
                   title: 'Recommendations : Based on Your Search',

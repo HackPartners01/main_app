@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'screens/home_page.dart';
+import 'screens/product_list.dart';
 import 'constants.dart';
 
 void main() {
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/HomePage',
       routes: {
         '/HomePage': (context) => HomePage(),
+        '/ProductList': (context) => ProductList(),
       },
     );
   }

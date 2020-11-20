@@ -1,16 +1,17 @@
 
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:main_app/screens/sell_page_part2.dart';
 
 class Seller {
-  String name = '';
+  String name;
   int contact ;
   int id;
-  String shopName = '';
-  String shopAddress = '';
+  String shopName;
+  String shopAddress;
   double latitude;
   double longitude;
-  static int count=0;
+  int count=0;
 
   Seller(
       {this.name,
@@ -19,13 +20,20 @@ class Seller {
       this.shopAddress,
       this.id,
       this.latitude,
-      this.longitude}){
-    count++;
-    this.id = count;
-  }
+      this.longitude});
 
   save() {
-    print('Saved');
+    count++;
+    this.id = count;
+    print('Seller Saved');
+    final DatabaseReference databaseReference = FirebaseDatabase().reference().child("Seller");
+    databaseReference.push().set({
+      'id': this.id,
+      'name': this.name,
+      'contact': this.contact,
+      'shopName': this.shopName,
+      'shopAddress': this.shopAddress
+    });
   }
 }
 

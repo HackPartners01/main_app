@@ -6,7 +6,7 @@ import 'package:main_app/screens/sell_page_part2.dart';
 class Seller {
   String name;
   int contact ;
-  int id;
+  String id;
   String shopName;
   String shopAddress;
   double latitude;
@@ -23,8 +23,7 @@ class Seller {
       this.longitude});
 
   save() {
-    count++;
-    this.id = count;
+    this.id = name+contact.toString();
     print('Seller Saved');
     final DatabaseReference databaseReference = FirebaseDatabase().reference().child("Seller");
     databaseReference.push().set({

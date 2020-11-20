@@ -1,4 +1,3 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 
 class Product {
@@ -7,11 +6,8 @@ class Product {
   String name = '';
   String description = '';
   String sellerId;
-  String networkImageAddress = "";
+  String networkImageAddress = '';
   int price;
-  static int count=0;
-
-
 
   Product({
     this.id,
@@ -24,9 +20,10 @@ class Product {
   });
 
   save() {
-    final DatabaseReference databaseReference = FirebaseDatabase().reference().child("Product");
+    final DatabaseReference databaseReference =
+        FirebaseDatabase().reference().child("Product");
     print('Product Saved');
-    this.id = sellerId+name;
+    this.id = sellerId + name;
     databaseReference.push().set({
       'id': this.id,
       'name': this.name,
@@ -35,9 +32,5 @@ class Product {
       'description': this.description,
       'price': this.price
     });
-
-
-
   }
-
 }

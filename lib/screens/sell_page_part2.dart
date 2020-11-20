@@ -1,15 +1,11 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:main_app/data_models/seller.dart';
 import 'package:main_app/data_models/product.dart';
 
-
-
 class SellPage2 extends StatelessWidget {
-
   static Seller seller;
 
-  SellPage2(Seller sellerInfo){
+  SellPage2(Seller sellerInfo) {
     seller = sellerInfo;
   }
 
@@ -26,42 +22,39 @@ class SellForm2 extends StatefulWidget {
   }
 }
 
-class SellForm2State extends State<SellForm2>{
+class SellForm2State extends State<SellForm2> {
   @override
   Widget build(BuildContext context) {
-    final _formkey = GlobalKey<FormState>();
+    final _formKey = GlobalKey<FormState>();
     final _product = Product();
 
     return Form(
-      key: _formkey,
+      key: _formKey,
       child: SingleChildScrollView(
         child: Column(
           children: [
             Container(
               width: 400.0,
               child: Padding(
-                padding:
-                const EdgeInsets.only(left: 0, right: 8, top: 8, bottom: 8),
+                padding: const EdgeInsets.only(left: 0, right: 8, top: 8, bottom: 8),
                 child: Row(
                   children: [
                     CategoryDropdown(),
                     Expanded(
                       child: Container(
                         child: TextFormField(
-                          autocorrect: true,
-                          decoration: InputDecoration(
-                            labelText: 'Enter product name',
-                            prefixIcon: Icon(Icons.drive_file_rename_outline),
-                            border: OutlineInputBorder(),
-                          ),
-                          validator: (name) {
-                            if (name.isEmpty)
-                              return 'Please enter a product name';
-                            return null;
-                          },
-                          onSaved: (val)=>
-                              _product.name = val//TODO
-                        ),
+                            autocorrect: true,
+                            decoration: InputDecoration(
+                              labelText: 'Enter product name',
+                              prefixIcon: Icon(Icons.drive_file_rename_outline),
+                              border: OutlineInputBorder(),
+                            ),
+                            validator: (name) {
+                              if (name.isEmpty) return 'Please enter a product name';
+                              return null;
+                            },
+                            onSaved: (val) => _product.name = val //TODO
+                            ),
                       ),
                     ),
                   ],
@@ -73,21 +66,19 @@ class SellForm2State extends State<SellForm2>{
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
-                  keyboardType: TextInputType.multiline,
-                  minLines: 3,
-                  maxLines: 3,
-                  decoration: InputDecoration(
-                    labelText: 'Enter the product description',
-                    border: OutlineInputBorder(),
-                  ),
-                  validator: (desc) {
-                    if (desc.isEmpty)
-                      return 'Please enter  a product description';
-                    return null;
-                  },
-                  onSaved: (val)=>
-                      _product.description = val //TODO
-                ),
+                    keyboardType: TextInputType.multiline,
+                    minLines: 3,
+                    maxLines: 3,
+                    decoration: InputDecoration(
+                      labelText: 'Enter the product description',
+                      border: OutlineInputBorder(),
+                    ),
+                    validator: (desc) {
+                      if (desc.isEmpty) return 'Please enter  a product description';
+                      return null;
+                    },
+                    onSaved: (val) => _product.description = val //TODO
+                    ),
               ),
             ),
             Container(
@@ -101,13 +92,11 @@ class SellForm2State extends State<SellForm2>{
                       border: OutlineInputBorder(),
                     ),
                     validator: (desc) {
-                      if (desc.isEmpty)
-                        return 'Please enter the price';
+                      if (desc.isEmpty) return 'Please enter the price';
                       return null;
                     },
-                    onSaved: (val)=>
-                    _product.price = int.parse(val) //TODO
-                ),
+                    onSaved: (val) => _product.price = int.parse(val) //TODO
+                    ),
               ),
             ),
             Padding(
@@ -115,27 +104,25 @@ class SellForm2State extends State<SellForm2>{
               child: ElevatedButton(
                 child: Text('Submit'),
                 onPressed: () {
-                  final form = _formkey.currentState;
+                  final form = _formKey.currentState;
                   if (form.validate()) {
-                      form.save();
-                      _product.sellerId = SellPage2.seller.id;
-                      _product.save();
-                      Scaffold.of(context).showSnackBar(
-                          SnackBar(content: Text('Product ${_product.name} added successfully to seller ${SellPage2.seller.name}\'\ account')));
+                    form.save();
+                    _product.sellerId = SellPage2.seller.id;
+                    _product.save();
+                    Scaffold.of(context).showSnackBar(SnackBar(
+                        content: Text(
+                            'Product ${_product.name} added successfully to seller ${SellPage2.seller.name}\'\ account')));
                   }
-
                 },
               ),
             ),
           ],
         ),
       ),
-
     );
-
   }
-
 }
+
 class CategoryDropdown extends StatefulWidget {
   CategoryDropdown({Key key}) : super(key: key);
 

@@ -1,8 +1,10 @@
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:main_app/data_models/seller.dart';
 import 'package:main_app/screens/sell_page_part2.dart';
 import 'package:main_app/data_models/product.dart ';
+import 'package:main_app/data_models/seller.dart';
+import '';
 
 
 class SellPage extends StatelessWidget {

@@ -25,7 +25,7 @@ class Seller {
   }
 
   save() {
-    print('Seller Saved');
+    print('Saved');
   }
 }
 

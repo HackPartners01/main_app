@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "399429601920",
+    "firebase_url": "https://raste-ka-maal-saste-me-3b071.firebaseio.com",
+    "project_id": "raste-ka-maal-saste-me-3b071",
+    "storage_bucket": "raste-ka-maal-saste-me-3b071.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:399429601920:android:2b0033056d2d288a31f465",
+        "android_client_info": {
+          "package_name": "com.example.main_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "399429601920-ha74ncas92po6mi6kajq4atshg7sueq4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWeulq0xHCHvXwKe0yIRcMh24pcNahxB4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "399429601920-ha74ncas92po6mi6kajq4atshg7sueq4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

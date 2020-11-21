@@ -1,7 +1,11 @@
+import 'package:firebase_database/firebase_database.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import 'package:main_app/screens/sell_page_part2.dart';
+import 'package:main_app/data_models/product.dart ';
 import 'package:main_app/data_models/seller.dart';
+import '';
+
 
 class SellPage extends StatelessWidget {
   @override
@@ -19,8 +23,8 @@ class SellForm extends StatefulWidget {
 
 class SellFormState extends State<SellForm> {
   final _formKey = GlobalKey<FormState>();
-  final _sellerInfo = Seller();
-  // final _product = Product();
+  final _sellerinfo = Seller();
+  final _product = Product();
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -47,7 +51,8 @@ class SellFormState extends State<SellForm> {
                     if (name.isEmpty) return 'Please enter a valid name';
                     return null;
                   },
-                  onSaved: (val) => setState(() => _sellerInfo.name = val), //TODO
+                  onSaved: (val)=>
+                      setState(() => _sellerinfo.name = val ),//TODO
                 ),
               ),
             ),
@@ -64,14 +69,17 @@ class SellFormState extends State<SellForm> {
                     border: OutlineInputBorder(),
                   ),
                   validator: (mob) {
-                    if (mob.isEmpty) return 'Please enter a valid Mobile Number';
+                    if (mob.isEmpty)
+                      return 'Please enter a valid Mobile Number';
                     return null;
                   },
-                  onSaved: (val) =>
-                      setState(() => _sellerInfo.contact = int.parse(val)), //TODO
+                  onSaved: (val)=>
+                      setState(() => _sellerinfo.contact = int.parse(val)),//TODO
                 ),
               ),
             ),
+
+
             Container(
               width: 400.0,
               child: Padding(
@@ -86,8 +94,8 @@ class SellFormState extends State<SellForm> {
                     if (desc.isEmpty) return 'Please enter a valid shop name';
                     return null;
                   },
-                  onSaved: (val) =>
-                      setState(() => _sellerInfo.shopName = val), //TODO
+                  onSaved: (val)=>
+                      setState(() => _sellerinfo.shopName = val ),//TODO
                 ),
               ),
             ),
@@ -105,8 +113,8 @@ class SellFormState extends State<SellForm> {
                     if (desc.isEmpty) return 'Please enter a valid address';
                     return null;
                   },
-                  onSaved: (val) =>
-                      setState(() => _sellerInfo.shopAddress = val), //TODO
+                  onSaved: (val)=>
+                      setState(() => _sellerinfo.shopAddress = val ),//TODO
                 ),
               ),
             ),
@@ -118,7 +126,8 @@ class SellFormState extends State<SellForm> {
                   children: [
                     Expanded(
                       child: Padding(
-                        padding: const EdgeInsets.only(top: 8, right: 8, bottom: 8),
+                        padding:
+                        const EdgeInsets.only(top: 8, right: 8, bottom: 8),
                         child: Container(
                           child: TextFormField(
                             autocorrect: true,
@@ -127,18 +136,20 @@ class SellFormState extends State<SellForm> {
                               border: OutlineInputBorder(),
                             ),
                             validator: (name) {
-                              if (name.isEmpty) return 'Please enter a city name';
+                              if (name.isEmpty)
+                                return 'Please enter a city name';
                               return null;
                             },
-                            onSaved: (val) => setState(
-                                () => _sellerInfo.shopAddress += ', ' + val), //TODO
+                            onSaved: (val)=>
+                                setState(() => _sellerinfo.shopAddress += val+" "),//TODO
                           ),
                         ),
                       ),
                     ),
                     Expanded(
                       child: Padding(
-                        padding: const EdgeInsets.only(top: 8, bottom: 8, left: 8),
+                        padding:
+                        const EdgeInsets.only(top: 8, bottom: 8, left: 8),
                         child: Container(
                           child: TextFormField(
                             autocorrect: true,
@@ -147,11 +158,12 @@ class SellFormState extends State<SellForm> {
                               border: OutlineInputBorder(),
                             ),
                             validator: (name) {
-                              if (name.isEmpty) return 'Please enter a valid state';
+                              if (name.isEmpty)
+                                return 'Please enter a valid state';
                               return null;
                             },
-                            onSaved: (val) => setState(
-                                () => _sellerInfo.shopAddress += ', ' + val), //TODO
+                            onSaved: (val)=>
+                                setState(() => _sellerinfo.shopAddress += val ),//TODO
                           ),
                         ),
                       ),
@@ -167,18 +179,19 @@ class SellFormState extends State<SellForm> {
                 onPressed: () {
                   final form = _formKey.currentState;
                   if (form.validate()) {
-                    form.save();
-                    _sellerInfo.save();
+
+                      form.save();
+                      _sellerinfo.save();
 
                     Scaffold.of(context).showSnackBar(
                         SnackBar(content: Text('Sahi hai bhai data!')));
 
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => SellPage2(_sellerInfo),
-                      ),
-                    );
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => SellPage2(_sellerinfo),
+                        ),
+                      );
                   }
                 },
               ),
@@ -189,3 +202,4 @@ class SellFormState extends State<SellForm> {
     );
   }
 }
+

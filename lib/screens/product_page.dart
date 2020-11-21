@@ -5,6 +5,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 
 import 'package:main_app/components/search_bar.dart';
 import 'package:main_app/data_models/product.dart';
+import 'package:main_app/data_models/seller.dart';
 import 'package:main_app/constants.dart';
 
 class ProductPage extends StatelessWidget {
@@ -14,6 +15,8 @@ class ProductPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Seller seller = product.getSeller();
+
     return Scaffold(
       appBar: AppBar(
         title: FittedBox(
@@ -56,8 +59,8 @@ class ProductPage extends StatelessWidget {
                         FittedBox(
                           fit: BoxFit.fitWidth,
                           child: Text(
-                            // product.name, TODO
-                            'ProductName',
+                            product.name,
+                            // 'ProductName',
                             style: TextStyle(fontSize: 35.0),
                           ),
                         ),
@@ -84,8 +87,8 @@ class ProductPage extends StatelessWidget {
                         alignment: Alignment.centerLeft,
                         fit: BoxFit.contain,
                         child: Text(
-                          // product.price.toString(), TODO
-                          'Price',
+                          product.price.toString(),
+                          // 'Price',
                           textAlign: TextAlign.start,
                           style: TextStyle(
                             fontSize: 30.0,
@@ -115,8 +118,8 @@ class ProductPage extends StatelessWidget {
                   Expanded(
                     child: SizedBox(
                       child: AutoSizeText(
-                        // product.description, Todo
-                        'Description',
+                        product.description,
+                        // 'Description',
                         style: TextStyle(fontSize: 15),
                       ),
                     ),
@@ -150,7 +153,7 @@ class ProductPage extends StatelessWidget {
                           fontSize: 20.0,
                         ),
                       ),
-                      Text('Gulfaam Kali', style: TextStyle(fontSize: 20.0)),
+                      Text(seller.name, style: TextStyle(fontSize: 20.0)),
                     ],
                   ),
                   SizedBox(height: 10.0),
@@ -164,7 +167,8 @@ class ProductPage extends StatelessWidget {
                           fontSize: 20.0,
                         ),
                       ),
-                      Text('914173314', style: TextStyle(fontSize: 20.0)),
+                      Text(seller.contact.toString(),
+                          style: TextStyle(fontSize: 20.0)),
                     ],
                   ),
                   SizedBox(height: 10.0),
@@ -178,7 +182,7 @@ class ProductPage extends StatelessWidget {
                           fontSize: 20.0,
                         ),
                       ),
-                      Text('Gulfaam ki Mehfil', style: TextStyle(fontSize: 20.0)),
+                      Text(seller.shopName, style: TextStyle(fontSize: 20.0)),
                     ],
                   ),
                   SizedBox(height: 10.0),
@@ -193,7 +197,7 @@ class ProductPage extends StatelessWidget {
                   Expanded(
                     child: SizedBox(
                       child: AutoSizeText(
-                        'Rangeen Gali, Modern Colony, Kanpur, Uttar Pradesh',
+                        seller.shopAddress,
                         style: TextStyle(fontSize: 18.0),
                       ),
                     ),

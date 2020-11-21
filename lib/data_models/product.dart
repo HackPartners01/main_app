@@ -1,5 +1,8 @@
 import 'package:firebase_database/firebase_database.dart';
 
+import 'seller.dart';
+import 'package:main_app/data.dart';
+
 class Product {
   String id;
   String category = '';
@@ -19,12 +22,11 @@ class Product {
     this.price,
   });
 
-  save() {
+  void save() async {
     final DatabaseReference databaseReference =
-        FirebaseDatabase().reference().child("Product");
-    print('Product Saved');
+        FirebaseDatabase().reference().child('Products');
     this.id = sellerId + name;
-    databaseReference.push().set({
+    await databaseReference.push().set({
       'id': this.id,
       'name': this.name,
       'category': this.category,
@@ -32,5 +34,14 @@ class Product {
       'description': this.description,
       'price': this.price
     });
+
+    print('Product Saved');
+  }
+
+  Seller getSeller() {
+    for (Seller seller in data.sellerList) {
+      if (sellerId == seller.id) return seller;
+    }
+    return null;
   }
 }

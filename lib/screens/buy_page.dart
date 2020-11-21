@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 
 import 'package:main_app/components/circle_image_and_label.dart';
+import 'package:main_app/data.dart';
 import 'package:main_app/data_models/category.dart';
 import 'package:main_app/components/body_section.dart';
 import 'package:main_app/data_models/body_section_content.dart';
 import 'package:main_app/constants.dart';
+
+import 'package:main_app/scratch.dart';
+import 'package:main_app/screens/product_page.dart'; //  temporary just for testing
 
 class BuyPage extends StatelessWidget {
   @override
@@ -26,7 +30,9 @@ class BuyPage extends StatelessWidget {
         CircleImageAndLabel(
           image: AssetImage('assets/images/Pseudocode.png'),
           label: 'All Categories',
-          onPress: () {},
+          onPress: () {
+            run();
+          }, // TODO : remove this function
         ),
       );
       for (Category category in categoryList) {
@@ -86,7 +92,11 @@ class BuyPage extends StatelessWidget {
                   sectionBackgroundColor: kColorBlue,
                   onPressOfCardChildren: [
                     () {
-                      Navigator.pushNamed(context, '/ProductPage');
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  ProductPage(product: data.productList.first)));
                     }
                   ],
                 ),

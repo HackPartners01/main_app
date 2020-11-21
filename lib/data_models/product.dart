@@ -33,7 +33,7 @@ class Product {
   }
   
   void save() async {
-    final DatabaseReference databaseReference = FirebaseDatabase().reference().child("Product");
+    final DatabaseReference databaseReference = FirebaseDatabase().reference().child("Products");
     print('Product Saved');
     this.id = sellerId+name;
     await databaseReference.push().set({

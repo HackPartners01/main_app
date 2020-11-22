@@ -1,10 +1,12 @@
 import 'dart:io';
 
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:main_app/data_models/product.dart';
+import 'package:main_app/screens/product_page.dart';
 import 'package:main_app/screens/sell_page.dart';
 import 'package:main_app/screens/sell_page_part2.dart';
 
@@ -36,16 +38,18 @@ class UploaderState extends State<Uploader> {
 
   void startUpload() {
     String filePath = 'images/${DateTime.now()}.png';
-    _storage.ref().child(filePath).putFile(widget.file).whenComplete(() => {
-          downloadUrl =
-              _storage.ref().child(filePath).getDownloadURL().toString(),
-          Scaffold.of(context).showSnackBar(
-              SnackBar(content: Text("File Uploaded Successfully"))),
+    Reference ref = _storage.ref().child(filePath);
+    task = ref.putFile(widget.file);
+    task.whenComplete(() async => {
+          downloadUrl = await ref.getDownloadURL().then((value) => downloadUrl = value),
           p.networkImageAddress = downloadUrl,
+          p.save(),
+          Scaffold.of(context).showSnackBar(
+              SnackBar(content: Text('file uploaded succesfully'))),
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => SellPage(),
+              builder: (context) => ProductPage(product: p, showAppBar: false,),
             ),
           )
         });

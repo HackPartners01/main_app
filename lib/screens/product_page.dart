@@ -21,29 +21,27 @@ class ProductPage extends StatelessWidget {
     return Scaffold(
       appBar: showAppBar
           ? AppBar(
-              title: FittedBox(
-                fit: BoxFit.fitWidth,
-                child: Text('Raste ka Maal Saste me',
-                    style: GoogleFonts.openSans(textStyle: kTopAppBarTextStyle)),
-              ),
-              actions: <Widget>[
-                IconButton(
-                    icon: Icon(Icons.search),
-                    onPressed: () {
-                      showSearch(context: context, delegate: SearchBar());
-                    })
-              ],
-            )
+        title: FittedBox(
+          fit: BoxFit.fitWidth,
+          child: Text('Raste ka Maal Saste me',
+              style: GoogleFonts.openSans(textStyle: kTopAppBarTextStyle)),
+        ),
+        actions: <Widget>[
+          IconButton(
+              icon: Icon(Icons.search),
+              onPressed: () {
+                showSearch(context: context, delegate: SearchBar());
+              })
+        ],
+      )
           : null,
       body: Container(
         child: ListView(
           scrollDirection: Axis.vertical,
           children: <Widget>[
-            Image(
+            Container(
               height: 250.0,
-              fit: BoxFit.contain,
-              // image: NetworkImage(product.networkImageAddress), TODO
-              image: AssetImage('assets/images/Pseudocode.png'),
+              child: Image.network(product.networkImageAddress),
             ),
             Container(
               height: 100.0,

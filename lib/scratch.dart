@@ -4,7 +4,9 @@ import 'package:firebase_database/firebase_database.dart';
 
 import 'package:main_app/data_models/seller.dart';
 import 'data_models/product.dart';
+import 'data_models/body_section_content.dart';
 import 'data.dart';
+import 'services/location.dart';
 
 void run() {
   final DatabaseReference dBRef = FirebaseDatabase.instance.reference();
@@ -34,6 +36,10 @@ void run() {
     print(sellerList[0]);
   }
 
-  print(data.productList[0].name);
+  // print(data.productList[0].name);
   // readData();
+  // BodySectionContent bodySectionContent =
+  //   //     BodySectionContent('All Products', data.productList);
+  //   // bodySectionContent.save();
+  print({location.latitude, location.longitude});
 }

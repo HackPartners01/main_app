@@ -5,6 +5,7 @@ import 'screens/home_page.dart';
 import 'screens/product_list.dart';
 import 'data.dart';
 import 'constants.dart';
+import 'services/location.dart';
 
 void main() {
   runApp(MyApp());
@@ -16,6 +17,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     data.updateProductList();
     data.updateSellerList();
+    location.getCurrentLocation();
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,

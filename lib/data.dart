@@ -8,14 +8,13 @@ class Data {
   List<Seller> sellerList = [];
   final DatabaseReference databaseReference = FirebaseDatabase.instance.reference();
 
-  void updateProductList() {
-    Map data;
+  void updateProductList() async {
+    Map jsonData;
     databaseReference.child('Products').onValue.listen((event) {
-      print('product list updation event called');
       productList = [];
-      data = event.snapshot.value;
-      if (data != null) {
-        data.forEach((key, value) {
+      jsonData = event.snapshot.value;
+      if (jsonData != null) {
+        jsonData.forEach((key, value) {
           productList.add(
             Product(
               id: value['id'],
@@ -33,14 +32,13 @@ class Data {
     });
   }
 
-  void updateSellerList() {
-    var data;
+  void updateSellerList() async {
+    Map jsonData;
     databaseReference.child('Sellers').onValue.listen((event) {
-      print('seller list updation event called');
       sellerList = [];
-      data = event.snapshot.value;
-      if (data != null) {
-        data.forEach((key, value) {
+      jsonData = event.snapshot.value;
+      if (jsonData != null) {
+        jsonData.forEach((key, value) {
           sellerList.add(
             Seller(
               name: value['name'],

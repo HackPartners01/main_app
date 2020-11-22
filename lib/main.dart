@@ -1,13 +1,16 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:main_app/screens/product_page.dart';
 
 import 'screens/home_page.dart';
 import 'screens/product_list.dart';
-import 'data.dart';
 import 'constants.dart';
 import 'services/location.dart';
+import 'data.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
@@ -30,6 +33,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/HomePage': (context) => HomePage(),
         '/ProductList': (context) => ProductList(),
+        '/ProductPage': (context) => ProductPage(),
       },
     );
   }

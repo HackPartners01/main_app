@@ -121,7 +121,6 @@ class SellForm2State extends State<SellForm2>{
                   if (form.validate()) {
                       form.save();
                       _product.sellerId = SellPage2.seller.id;
-                      _product.save();
                       Scaffold.of(context).showSnackBar(
                           SnackBar(content: Text('Product ${_product.name} added successfully to seller ${SellPage2.seller.name}\'\ account')));
 

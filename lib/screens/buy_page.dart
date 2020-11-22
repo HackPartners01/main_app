@@ -95,8 +95,9 @@ class BuyPage extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) =>
-                                  ProductPage(product: data.productList.first)));
+                              builder: (context) => ProductPage(
+                                  product: data.productList.first,
+                                  showAppBar: true)));
                     }
                   ],
                 ),

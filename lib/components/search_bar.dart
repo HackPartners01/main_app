@@ -1,18 +1,13 @@
 import 'package:flutter/material.dart';
 
-class SearchBar extends SearchDelegate<String> {
-  // TODO: Replace this list with actual product list stored on database
-  final productList = [
-    'shampoo',
-    'pottery',
-    'Handicrafts',
-    'bedsheets',
-  ];
+import 'package:main_app/data.dart';
+import 'package:main_app/data_models/product.dart';
+import 'package:main_app/screens/product_page.dart';
 
-  final recentSearch = [
-    'bedsheets',
-    'Handicrafts',
-  ];
+class SearchBar extends SearchDelegate<String> {
+  // TODO: Store this recentSearch list on users device
+  List<Product> recentSearch = [];
+  Product searchProduct;
 
   @override
   List<Widget> buildActions(BuildContext context) {
@@ -41,8 +36,8 @@ class SearchBar extends SearchDelegate<String> {
 
   @override
   Widget buildResults(BuildContext context) {
-    // TODO : Products Page/Results page
-    return Text('Result');
+    if (!recentSearch.contains(searchProduct)) recentSearch.add(searchProduct);
+    return ProductPage(product: searchProduct, showAppBar: false);
   }
 
   @override
@@ -52,8 +47,9 @@ class SearchBar extends SearchDelegate<String> {
       return ListView.builder(
         itemBuilder: (context, index) => ListTile(
           leading: Icon(Icons.history),
-          title: Text(suggestionList[index]),
+          title: Text(suggestionList[index].name),
           onTap: () {
+            searchProduct = suggestionList[index];
             showResults(context);
           },
         ),
@@ -61,27 +57,27 @@ class SearchBar extends SearchDelegate<String> {
       );
     } else {
       final suggestionList =
-          productList.where((p) => p.startsWith(query)).toList();
-      // TODO : Edit the display of suggestion list based on updated styling
+          data.productList.where((p) => p.name.startsWith(query)).toList();
       return ListView.builder(
         itemBuilder: (context, index) => ListTile(
           leading: Icon(Icons.search),
           title: RichText(
             text: TextSpan(
-              text: suggestionList[index].substring(0, query.length),
+              text: suggestionList[index].name.substring(0, query.length),
               style: TextStyle(
                 fontSize: 16.0,
                 color: Colors.black,
               ),
               children: [
                 TextSpan(
-                  text: suggestionList[index].substring(query.length),
+                  text: suggestionList[index].name.substring(query.length),
                   style: TextStyle(color: Colors.grey),
                 )
               ],
             ),
           ),
           onTap: () {
+            searchProduct = suggestionList[index];
             showResults(context);
           },
         ),

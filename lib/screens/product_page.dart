@@ -10,28 +10,31 @@ import 'package:main_app/constants.dart';
 
 class ProductPage extends StatelessWidget {
   final Product product;
+  final bool showAppBar;
 
-  const ProductPage({this.product});
+  const ProductPage({this.product, this.showAppBar});
 
   @override
   Widget build(BuildContext context) {
     Seller seller = product.getSeller();
 
     return Scaffold(
-      appBar: AppBar(
-        title: FittedBox(
-          fit: BoxFit.fitWidth,
-          child: Text('Raste ka Maal Saste me',
-              style: GoogleFonts.openSans(textStyle: kTopAppBarTextStyle)),
-        ),
-        actions: <Widget>[
-          IconButton(
-              icon: Icon(Icons.search),
-              onPressed: () {
-                showSearch(context: context, delegate: SearchBar());
-              })
-        ],
-      ),
+      appBar: showAppBar
+          ? AppBar(
+              title: FittedBox(
+                fit: BoxFit.fitWidth,
+                child: Text('Raste ka Maal Saste me',
+                    style: GoogleFonts.openSans(textStyle: kTopAppBarTextStyle)),
+              ),
+              actions: <Widget>[
+                IconButton(
+                    icon: Icon(Icons.search),
+                    onPressed: () {
+                      showSearch(context: context, delegate: SearchBar());
+                    })
+              ],
+            )
+          : null,
       body: Container(
         child: ListView(
           scrollDirection: Axis.vertical,

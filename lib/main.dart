@@ -5,6 +5,7 @@ import 'package:main_app/screens/product_page.dart';
 import 'screens/home_page.dart';
 import 'screens/product_list.dart';
 import 'constants.dart';
+import 'services/location.dart';
 import 'data.dart';
 
 Future<void> main() async {
@@ -19,6 +20,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     data.updateProductList();
     data.updateSellerList();
+    location.getCurrentLocation();
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData.light().copyWith(
